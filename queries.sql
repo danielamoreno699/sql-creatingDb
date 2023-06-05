@@ -1,3 +1,4 @@
 /*Queries that provide answers to the questions from all projects.*/
 
-SELECT * from animals WHERE name = 'Luna';
+SELECT * FROM vet_clinic WHERE name LIKE '%mon';
+
