@@ -8,3 +8,7 @@ CREATE TABLE vet_clinic (
     neutered boolean NOT NULL DEFAULT false,
     weight float NOT NULL DEFAULT 0
 );
+
+
+/* Modify database schema, add specie column. */
+ALTER TABLE vet_clinic ADD COLUMN species varchar(255);
