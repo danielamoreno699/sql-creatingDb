@@ -27,13 +27,14 @@ ROLLBACK;
 /*Delete all animals born after Jan 1st, 2022.*/
 DELETE FROM vet_clinic WHERE date_of_birth > '2022-01-01';
 
-/*Create savepoint*/
+/*Create savepoint and multiply weight with -1*/
 BEGIN; 
 SAVEPOINT my_savepoint;
+UPDATE vet_clinic SET weight = weight * -1;
 ROLLBACK TO SAVEPOINT my_savepoint;
 
-/*update weight */
-UPDATE vet_clinic SET weight = weight * -1;
+/*update weight with positive numbers */
+UPDATE vet_clinic SET weight = weight * -1 WHERE weight < 0
 COMMIT;
 
 
