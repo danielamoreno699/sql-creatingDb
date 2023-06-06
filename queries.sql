@@ -18,6 +18,7 @@ DELETE FROM vet_clinic WHERE date_of_birth > '2022-01-01';
 /*Create savepoint*/
 BEGIN;
 SAVEPOINT my_savepoint;
+COMMIT;
 
 
 
