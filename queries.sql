@@ -1,4 +1,4 @@
-/*Queries that provide answers to the questions from all projects.*/
+/*Queries of first submission*/
 
 SELECT * FROM vet_clinic WHERE name LIKE '%mon';
 SELECT name FROM vet_clinic WHERE date_of_birth BETWEEN '2016-01-01' AND '2019-12-31';
@@ -9,7 +9,7 @@ SELECT * FROM vet_clinic WHERE neutered = true;
 SELECT * FROM vet_clinic WHERE name <> 'Gabumon';
 SELECT * FROM vet_clinic WHERE weight BETWEEN 10.4 AND 17.3;
 
-
+/*Queries of Second  submission*/
 
 /* Update the species column to "digimon" for matching animals */
 BEGIN;
