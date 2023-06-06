@@ -1,17 +1,16 @@
-/*Queries that provide answers to the questions from all projects.*/
 
-SELECT * FROM vet_clinic WHERE name LIKE '%mon';
-SELECT name FROM vet_clinic WHERE date_of_birth BETWEEN '2016-01-01' AND '2019-12-31';
-SELECT name FROM vet_clinic WHERE neutered = true AND escape_attempts < 3;
-SELECT date_of_birth FROM vet_clinic WHERE name = 'Agumon' OR name = 'Pikachu';
-SELECT name, escape_attempts FROM vet_clinic WHERE weight > 10.5;
-SELECT * FROM vet_clinic WHERE neutered = true;
-SELECT * FROM vet_clinic WHERE name <> 'Gabumon';
-SELECT * FROM vet_clinic WHERE weight BETWEEN 10.4 AND 17.3;
-
-/* Update the data for species using Query Tool. */
+/* Update the species column to "digimon" for matching animals */
 BEGIN;
 UPDATE vet_clinic SET species = 'digimon' WHERE name LIKE '%mon';
+
+/* Update the species column to "pokemon" for animals without a species*/
+BEGIN; 
+UPDATE vet_clinic SET species = 'pokemon' WHERE species IS NULL;
+
+/* Delete all animals from table and then Rollback */
+BEGIN;
+DELETE FROM vet_clinic;
+ROLLBACK;
 
 
 
