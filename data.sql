@@ -7,3 +7,6 @@ VALUES
     ('Pikachu', '2021-01-07', 15.04, false, 1),
     ('Devimon', '2017-05-12', 11, true, 5);
 
+
+/* Modify database schema, add specie column. */
+ALTER TABLE vet_clinic ADD COLUMN species varchar(255);
