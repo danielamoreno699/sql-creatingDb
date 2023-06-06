@@ -12,5 +12,7 @@ BEGIN;
 DELETE FROM vet_clinic;
 ROLLBACK;
 
+/*Delete all animals born after Jan 1st, 2022.*/
+DELETE FROM vet_clinic WHERE date_of_birth > '2022-01-01';
 
 
