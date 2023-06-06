@@ -11,7 +11,7 @@ VALUES
 /* Modify database schema, add specie column. */
 ALTER TABLE vet_clinic ADD COLUMN species varchar(255);
 
-/* Add more data */
+/* Insert  more data */
 INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
 VALUES ('Charmander', '2020-02-08', 0, false, -11);
 

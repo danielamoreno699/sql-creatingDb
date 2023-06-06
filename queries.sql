@@ -9,5 +9,9 @@ SELECT * FROM vet_clinic WHERE neutered = true;
 SELECT * FROM vet_clinic WHERE name <> 'Gabumon';
 SELECT * FROM vet_clinic WHERE weight BETWEEN 10.4 AND 17.3;
 
+/* Update the data for species using Query Tool. */
+BEGIN;
+UPDATE vet_clinic SET species = 'digimon' WHERE name LIKE '%mon';
+
 
 
