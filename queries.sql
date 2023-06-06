@@ -48,7 +48,7 @@ SELECT COUNT(*) FROM vet_clinic WHERE escape_attempts = 0;
 SELECT AVG(weight) FROM vet_clinic;
 
 /*Who escapes the most, neutered or non-neutered animals?*/
-SELECT neutered, COUNT(*) AS escape_count FROM vet_clinic WHERE escape_attempts > 0 GROUP BY neutered;
+SELECT neutered, COUNT(*)  FROM vet_clinic WHERE escape_attempts > 0 GROUP BY neutered;
 
 /*What is the minimun and maximun weight of each type of animal?*/
 SELECT species, MIN(weight), MAX(weight) FROM vet_clinic GROUP BY species;
