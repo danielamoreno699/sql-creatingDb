@@ -25,3 +25,6 @@ CREATE TABLE species (
     id SERIAL PRIMARY KEY,
     name varchar(100) NOT NULL,
 );
+
+/*Modify database animals*/
+ALTER TABLE vet_clinic DROP COLUMN species; /* Drop column species */
