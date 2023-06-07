@@ -29,3 +29,5 @@ CREATE TABLE species (
 /*Modify database animals*/
 ALTER TABLE vet_clinic DROP COLUMN species; /* Drop column species */
 ALTER TABLE vet_clinic ADD COLUMN species_id INT REFERENCES species(id);/* Add column species_id referencing specie id */
+ALTER TABLE vet_clinic ADD COLUMN owner_id INTEGER REFERENCES owners (id); /* Add column owner_id referencing owner id */
+
