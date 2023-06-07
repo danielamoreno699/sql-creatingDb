@@ -38,9 +38,27 @@ VALUES
     ('Digimon');
 
 
-/*update species_id, if the name ends in "mon" it will be Digimon*/
+/*update species_id, if the name ends in "mon" it will be Digimon otherwise will be Pokemon*/
 UPDATE vet_clinic
 SET species_id = CASE
     WHEN name ILIKE '%mon' THEN (SELECT id FROM species WHERE name = 'Digimon')
     ELSE (SELECT id FROM species WHERE name = 'Pokemon')
 END;
+
+
+/*update owner_id accoding to data provided*/
+/*Sam Smith owns Agumon.
+Jennifer Orwell owns Gabumon and Pikachu.
+Bob owns Devimon and Plantmon.
+Melody Pond owns Charmander, Squirtle, and Blossom.
+Dean Winchester owns Angemon and Boarmon.*/
+UPDATE vet_clinic
+SET owner_id = (
+    CASE
+        WHEN name = 'Agumon' THEN (SELECT id FROM owners WHERE full_name = 'Sam Smith')
+        WHEN name IN ('Gabumon', 'Pikachu') THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
+        WHEN name IN ('Devimon', 'Plantmon') THEN (SELECT id FROM owners WHERE full_name = 'Bob')
+        WHEN name IN ('Charmander', 'Squirtle', 'Blossom') THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
+        WHEN name IN ('Angemon', 'Boarmon') THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+    END
+);
