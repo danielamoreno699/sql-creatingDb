@@ -11,24 +11,49 @@ VALUES
 
 /* Insert  more data of animals into table */
 INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Charmander', '2020-02-08', 0, false, -11);
-
-INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Plantmon', '2021-11-15', 2, true, -5.7);
-
-INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Squirtle', '1993-04-02', 3, false, -12.13);
-
-INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Angemon', '2005-06-12', 1, true, -45);
-
-INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Boarmon', '2005-06-07', 7, true, 20.4);
-
-INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Blossom', '1998-10-13', 3, true, 17);
-
-INSERT INTO vet_clinic (name, date_of_birth, escape_attempts, neutered, weight)
-VALUES ('Ditto', '2022-05-14', 4, true, 22);
+VALUES 
+    ('Charmander', '2020-02-08', 0, false, -11),
+    ('Plantmon', '2021-11-15', 2, true, -5.7),
+    ('Squirtle', '1993-04-02', 3, false, -12.13),
+    ('Angemon', '2005-06-12', 1, true, -45),
+    ('Boarmon', '2005-06-07', 7, true, 20.4),
+    ('Blossom', '1998-10-13', 3, true, 17),
+    ('Ditto', '2022-05-14', 4, true, 22);
 
 
+/* insert data into new tables */
+INSERT INTO owners (full_name, age)
+VALUES
+    ('Sam Smith', 34),
+    ('Jennifer Orwell', 19),
+    ('Bob', 45),
+    ('Melody Pond', 77),
+    ('Dean Winchester', 14),
+    ('Jodie Whittaker', 38);
+
+/*insert data into species table"*/
+INSERT INTO species (name)
+VALUES
+    ('Pokemon'),
+    ('Digimon');
+
+
+/*update species_id, if the name ends in "mon" it will be Digimon otherwise will be Pokemon*/
+UPDATE vet_clinic
+SET species_id = CASE
+    WHEN name ILIKE '%mon' THEN (SELECT id FROM species WHERE name = 'Digimon')
+    ELSE (SELECT id FROM species WHERE name = 'Pokemon')
+END;
+
+
+/*update owner_id accoding to data provided*/
+UPDATE vet_clinic
+SET owner_id = (
+    CASE
+        WHEN name = 'Agumon' THEN (SELECT id FROM owners WHERE full_name = 'Sam Smith') /*Sam Smith owns Agumon.*/
+        WHEN name IN ('Gabumon', 'Pikachu') THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')/*Jennifer Orwell owns Gabumon and Pikachu.*/
+        WHEN name IN ('Devimon', 'Plantmon') THEN (SELECT id FROM owners WHERE full_name = 'Bob') /*Bob owns Devimon and Plantmon.*/
+        WHEN name IN ('Charmander', 'Squirtle', 'Blossom') THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond') /*Melody Pond owns Charmander, Squirtle, and Blossom.*/
+        WHEN name IN ('Angemon', 'Boarmon') THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester') /*Dean Winchester owns Angemon and Boarmon.*/
+    END
+);
