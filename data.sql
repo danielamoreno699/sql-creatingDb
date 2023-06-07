@@ -36,3 +36,11 @@ INSERT INTO species (name)
 VALUES
     ('Pokemon'),
     ('Digimon');
+
+
+/*update species_id, if the name ends in "mon" it will be Digimon*/
+UPDATE vet_clinic
+SET species_id = CASE
+    WHEN name ILIKE '%mon' THEN (SELECT id FROM species WHERE name = 'Digimon')
+    ELSE (SELECT id FROM species WHERE name = 'Pokemon')
+END;
