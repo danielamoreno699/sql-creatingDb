@@ -102,3 +102,5 @@ SELECT o.full_name AS owner_name, COUNT(*) AS animal_count
 FROM owners o
 JOIN vet_clinic vc ON o.id = vc.owner_id
 GROUP BY o.full_name
+ORDER BY animal_count DESC
+LIMIT 1;
