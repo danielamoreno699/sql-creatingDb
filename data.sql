@@ -21,7 +21,7 @@ VALUES
     ('Ditto', '2022-05-14', 4, true, 22);
 
 
-
+/* insert data into new tables */
 INSERT INTO owners (full_name, age)
 VALUES
     ('Sam Smith', 34),
@@ -47,18 +47,13 @@ END;
 
 
 /*update owner_id accoding to data provided*/
-/*Sam Smith owns Agumon.
-Jennifer Orwell owns Gabumon and Pikachu.
-Bob owns Devimon and Plantmon.
-Melody Pond owns Charmander, Squirtle, and Blossom.
-Dean Winchester owns Angemon and Boarmon.*/
 UPDATE vet_clinic
 SET owner_id = (
     CASE
-        WHEN name = 'Agumon' THEN (SELECT id FROM owners WHERE full_name = 'Sam Smith')
-        WHEN name IN ('Gabumon', 'Pikachu') THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
-        WHEN name IN ('Devimon', 'Plantmon') THEN (SELECT id FROM owners WHERE full_name = 'Bob')
-        WHEN name IN ('Charmander', 'Squirtle', 'Blossom') THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
-        WHEN name IN ('Angemon', 'Boarmon') THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+        WHEN name = 'Agumon' THEN (SELECT id FROM owners WHERE full_name = 'Sam Smith') /*Sam Smith owns Agumon.*/
+        WHEN name IN ('Gabumon', 'Pikachu') THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')/*Jennifer Orwell owns Gabumon and Pikachu.*/
+        WHEN name IN ('Devimon', 'Plantmon') THEN (SELECT id FROM owners WHERE full_name = 'Bob') /*Bob owns Devimon and Plantmon.*/
+        WHEN name IN ('Charmander', 'Squirtle', 'Blossom') THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond') /*Melody Pond owns Charmander, Squirtle, and Blossom.*/
+        WHEN name IN ('Angemon', 'Boarmon') THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester') /*Dean Winchester owns Angemon and Boarmon.*/
     END
 );
