@@ -52,3 +52,5 @@ CREATE TABLE visits (
     vet_id int REFERENCES vets(id),
     visit_date date NOT NULL,
 );
+
+
