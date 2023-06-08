@@ -46,3 +46,10 @@ CREATE TABLE specializations (
     PRIMARY KEY (vet_id, species_id)
 );
 
+/*create a table named visits*/
+CREATE TABLE visits (
+    animal_id int REFERENCES vet_clinic(id),
+    vet_id int REFERENCES vets(id),
+    visit_date date NOT NULL,
+    PRIMARY KEY (vet_id, animal_id)
+);
