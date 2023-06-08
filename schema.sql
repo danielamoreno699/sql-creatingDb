@@ -39,14 +39,14 @@ CREATE TABLE vets (
     date_of_graduation date NOT NULL,
 );
 
-/*create table named specializations - join table*/
+/*create a join table named specializations*/
 CREATE TABLE specializations (
     vet_id int REFERENCES vets(id),
     species_id int REFERENCES species(id),
     PRIMARY KEY (vet_id, species_id)
 );
 
-/*create a table named visits*/
+/*create a join table named visits*/
 CREATE TABLE visits (
     animal_id int REFERENCES vet_clinic(id),
     vet_id int REFERENCES vets(id),
