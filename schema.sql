@@ -31,3 +31,26 @@ ALTER TABLE vet_clinic DROP COLUMN species; /* Drop column species */
 ALTER TABLE vet_clinic ADD COLUMN species_id INT FOREIGN KEY  REFERENCES species(id);/* Add column species_id referencing specie id */
 ALTER TABLE vet_clinic ADD COLUMN owner_id INT FOREIGN KEY  REFERENCES owners (id); /* Add column owner_id referencing owner id */
 
+/*create a table named vets"*/
+CREATE TABLE vets (
+    id SERIAL PRIMARY KEY,
+    name varchar(100) NOT NULL,
+    age int NOT NULL,
+    date_of_graduation date NOT NULL,
+);
+
+/*create a join table named specializations*/
+CREATE TABLE specializations (
+    vet_id int REFERENCES vets(id),
+    species_id int REFERENCES species(id),
+    PRIMARY KEY (vet_id, species_id)
+);
+
+/*create a join table named visits*/
+CREATE TABLE visits (
+    animal_id int REFERENCES vet_clinic(id),
+    vet_id int REFERENCES vets(id),
+    visit_date date NOT NULL,
+);
+
+
