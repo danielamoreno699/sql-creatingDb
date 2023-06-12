@@ -99,3 +99,7 @@ VALUES
     ((SELECT id FROM vet_clinic WHERE name = 'Boarmon'), (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-08-03'),
     ((SELECT id FROM vet_clinic WHERE name = 'Blossom'), (SELECT id FROM vets WHERE name = 'Stephanie Mendez'), '2020-05-24'),
     ((SELECT id FROM vet_clinic WHERE name = 'Blossom'), (SELECT id FROM vets WHERE name = 'William Tatcher'), '2021-01-11');
+
+    /*inserting data into the owners table*/
+
+    ALTER TABLE owners ADD COLUMN email VARCHAR(120);
