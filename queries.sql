@@ -279,7 +279,14 @@ where
     email = 'owner_18327@mail.com';
 
 
-/*query after improving performance of number of visits for each animal id*/
-SELECT COUNT(*)
-FROM visits
-WHERE animal_id = 4;
+/*query after improving performance of number of visits for each animal id by adding new col to vet_clinic*/
+EXPLAIN ANAlYZE
+SELECT visits_total
+FROM vet_clinic
+WHERE id = 4;
+
+/*query that optimizes search for vet id in vet_summary which contains info of visits*/
+EXPLAIN ANAlYZE
+SELECT * 
+FROM  vet_summary
+where vet_id = 2;

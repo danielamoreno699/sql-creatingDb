@@ -111,10 +111,24 @@ VALUES
     insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
 
 
-    /*inserting data into the visits table that pérforming calculation to the total amount of visits*/
+    /*inserting data into the visits_total col of the table vet_clinic that pérforms calculation based on  the total number of amount of visits*/
     UPDATE vet_clinic
     SET visits_total = (
     SELECT COUNT(*)
     FROM visits
     WHERE visits.animal_id = vet_clinic.id
 );
+
+/*inserting data into the new table created that contains the total number of visits per vet and follows the rules of normalization*/
+INSERT INTO vet_summary (vet_id, total_visits, earliest_visit, latest_visit)
+SELECT vet_id, COUNT(*) AS total_visits, MIN(visit_date) AS earliest_visit, MAX(visit_date) AS latest_visit
+FROM visits
+GROUP BY vet_id;
+
+/*Inserting the name of the vet into the new table*/
+UPDATE vet_summary AS vs
+SET vet_name = v.name
+FROM vets AS v
+WHERE vs.vet_id = v.id;
+
+

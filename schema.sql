@@ -58,3 +58,18 @@ CREATE TABLE visits (
 /* We implemented the denormalization method to improve the performance of the database. */
 ALTER TABLE vet_clinic
 ADD COLUMN visits_total int DEFAULT 0;
+
+/*add a table that will store the information about the visits of each vet fullfilling the rules of normalization*/
+CREATE TABLE vet_summary (
+  vet_id int REFERENCES vets(id), 
+  total_visits int,
+  earliest_visit date,
+  latest_visit date
+);
+
+/*add col for the name of the vet to the name table*/
+ALTER TABLE vet_summary
+ADD COLUMN vet_name varchar(100);
+
+
+
