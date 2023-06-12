@@ -265,3 +265,15 @@ WHERE vt.name = 'Maisy Smith'
 GROUP BY s.name
 ORDER BY COUNT(*) DESC
 LIMIT 1;
+
+--
+
+EXPLAIN ANAlYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+
+EXPLAIN ANAlYZE SELECT * FROM visits where vet_id = 2;
+
+EXPLAIN ANAlYZE
+SELECT *
+FROM owners
+where
+    email = 'owner_18327@mail.com';
