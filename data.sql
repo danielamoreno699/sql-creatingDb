@@ -109,3 +109,12 @@ VALUES
 
     /*inserting data into the owners table*/
     insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
+
+    /*inserting data into the visits table that pérforming calculation to the total amount of visits*/
+    UPDATE vet_clinic
+    SET visits_total = (
+    SELECT COUNT(*)
+    FROM visits
+    WHERE visits.animal_id = vet_clinic.id
+);

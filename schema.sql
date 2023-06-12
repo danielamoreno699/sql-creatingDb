@@ -54,3 +54,7 @@ CREATE TABLE visits (
 );
 
 
+/*add a column named visist_total to the table of vet_clinic, where the total number of visits will be stored for animal id*/
+/* We implemented the denormalization method to improve the performance of the database. */
+ALTER TABLE vet_clinic
+ADD COLUMN visits_total int DEFAULT 0;

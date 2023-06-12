@@ -277,3 +277,9 @@ SELECT *
 FROM owners
 where
     email = 'owner_18327@mail.com';
+
+
+/*query after improving performance of number of visits for each animal id*/
+SELECT COUNT(*)
+FROM visits
+WHERE animal_id = 4;
