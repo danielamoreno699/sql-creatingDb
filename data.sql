@@ -99,3 +99,39 @@ VALUES
     ((SELECT id FROM vet_clinic WHERE name = 'Boarmon'), (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-08-03'),
     ((SELECT id FROM vet_clinic WHERE name = 'Blossom'), (SELECT id FROM vets WHERE name = 'Stephanie Mendez'), '2020-05-24'),
     ((SELECT id FROM vet_clinic WHERE name = 'Blossom'), (SELECT id FROM vets WHERE name = 'William Tatcher'), '2021-01-11');
+
+   
+
+    /*inserting data into the visits table*/
+    INSERT INTO visits (animal_id, vet_id, visit_date) SELECT * FROM (SELECT id FROM vet_clinic ) animal_id, (SELECT id FROM vets) vet_id, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+
+    /*inserting data into the owners table*/
+    insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
+
+/*inserting data into the visits_total col of the table vet_clinic that pérforms calculation based on  the total number of amount of visits*/
+UPDATE vet_clinic
+SET visits_total = (
+SELECT COUNT(*)
+FROM visits
+WHERE visits.animal_id = vet_clinic.id
+);
+
+/*inserting data into the new table created that contains the total number of visits per vet and follows the rules of normalization*/
+INSERT INTO vet_summary (vet_id, total_visits, earliest_visit, latest_visit)
+SELECT vet_id, COUNT(*) AS total_visits, MIN(visit_date) AS earliest_visit, MAX(visit_date) AS latest_visit
+FROM visits
+GROUP BY vet_id;
+
+/*Inserting the name of the vet into the new table*/
+UPDATE vet_summary AS vs
+SET vet_name = v.name
+FROM vets AS v
+WHERE vs.vet_id = v.id;
+
+
+
+/*create index in owners table */
+BEGIN
+my_app=*# CREATE INDEX idx_email ON owners_inf_animal (email);
+REINDEX INDEX idx_email;

@@ -135,6 +135,11 @@ no deployment
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/daniela-moreno-06a139124/)
 - twitter : [twitter](@Daniela38932450)
 
+👤 **Nabeel Ahmed**
+- GitHub: [@Metaverse-Nabeel](https://github.com/Metaverse-Nabeel)
+- LinkedIn: [@Nabeel129](https://www.linkedin.com/in/nabeel129/)
+- Wellfound(AngelList): [@Nabeel129](https://wellfound.com/u/nabeel-ahmed-62)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
