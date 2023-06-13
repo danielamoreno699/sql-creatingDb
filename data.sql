@@ -133,5 +133,5 @@ WHERE vs.vet_id = v.id;
 
 /*create index in owners table */
 BEGIN
-my_app=*# CREATE INDEX idx_email ON owner_info_animals (email);
+my_app=*# CREATE INDEX idx_email ON owners_inf_animal (email);
 REINDEX INDEX idx_email;
