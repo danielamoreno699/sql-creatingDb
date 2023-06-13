@@ -272,11 +272,9 @@ EXPLAIN ANAlYZE SELECT COUNT(*) FROM visits where animal_id = 4;
 
 EXPLAIN ANAlYZE SELECT * FROM visits where vet_id = 2;
 
-EXPLAIN ANAlYZE
-SELECT *
-FROM owners
-where
-    email = 'owner_18327@mail.com';
+EXPLAIN ANAlYZE SELECT * FROM owner_info_animals where email = 'owner_18327@mail.com';
+
+
 
 
 /*query after improving performance of number of visits for each animal id by adding new col to vet_clinic*/
@@ -290,3 +288,6 @@ EXPLAIN ANAlYZE
 SELECT * 
 FROM  vet_summary
 where vet_id = 2;
+
+/*query for emails*/
+EXPLAIN ANAlYZE SELECT * FROM emails where email = 'owner_18327@mail.com';
